@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090910">
+  <meta name="description" content="J-BM Music AI: convierte tus ideas en canciones originales con inteligencia artificial.">
+  <title>J-BM Music AI — Tu sonido empieza aquí</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="J-BM Music AI inicio">
+      <span class="brand-mark">J<span>·</span>BM</span>
+      <span class="brand-sub">MUSIC <b>AI</b></span>
+    </a>
+    <span class="studio-tag"><i></i> ESTUDIO CREATIVO</span>
+  </header>
+
+  <main class="layout">
+    <section class="intro">
+      <p class="eyebrow">TU IDEA. TU IDENTIDAD. TU SONIDO.</p>
+      <h1>Haz que tu música<br><span>cobre vida.</span></h1>
+      <p class="intro-copy">Dale forma a una idea, define el ambiente y crea una canción original con inteligencia artificial.</p>
+      <div class="steps"><span><b>01</b> Imagina</span><span><b>02</b> Personaliza</span><span><b>03</b> Escucha</span></div>
+      <div class="wave-card" aria-hidden="true">
+        <div class="wave-meta"><span>J-BM SOUND LAB</span><span>01 / CREATE</span></div>
+        <div class="waveform"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="wave-meta wave-bottom"><span>FRECUENCIA CREATIVA</span><span>∞</span></div>
+      </div>
+      <p class="small-note">Tus canciones no se guardan en el servidor: se entregan directamente a tu navegador.</p>
+    </section>
+
+    <section class="studio panel">
+      <div class="panel-heading">
+        <div><p class="eyebrow">STUDIO / GENERADOR</p><h2>Construye tu canción</h2></div>
+        <span class="model-chip">LYRIA 3.5</span>
+      </div>
+
+      <form id="generator-form">
+        <label for="idea">¿Cómo imaginas tu canción?</label>
+        <textarea id="idea" name="idea" rows="3" maxlength="1800" placeholder="Ej.: Un reggaetón nocturno, con bajos profundos, melodía pegadiza y una vibra de superación..."></textarea>
+
+        <div class="field-grid">
+          <div class="field"><label for="genre">Género musical</label><select id="genre" name="genre"><option>Reggaetón urbano</option><option>Rap latino</option><option>Trap latino</option><option>Brazilian phonk</option><option>Pop urbano</option><option>Electrónica</option><option>Afrobeat</option><option>Lo-fi</option><option>Rock alternativo</option><option>Otro estilo</option></select></div>
+          <div class="field"><label for="mood">Ambiente</label><select id="mood" name="mood"><option>Enérgico y potente</option><option>Oscuro y misterioso</option><option>Emotivo y melódico</option><option>Fiestero y bailable</option><option>Relajado y atmosférico</option><option>Épico y motivador</option></select></div>
+          <div class="field"><label for="bpm">Tempo aproximado</label><div class="input-suffix"><input id="bpm" name="bpm" type="number" min="60" max="200" value="100"><span>BPM</span></div></div>
+          <div class="field"><label for="language">Idioma</label><select id="language" name="language"><option>español</option><option>inglés</option><option>portugués</option><option>Instrumental, sin idioma</option></select></div>
+        </div>
+
+        <label for="lyrics">Letra propia <span class="optional">OPCIONAL</span></label>
+        <textarea id="lyrics" name="lyrics" rows="3" maxlength="3000" placeholder="Pega tu letra original o deja el campo vacío para que Lyria cree una..."></textarea>
+        <p class="field-hint">Usa letras propias o que tengas permiso para utilizar.</p>
+
+        <div class="bottom-options">
+          <div class="field"><label for="vocals">Tipo de canción</label><select id="vocals" name="vocals"><option value="vocals">Con voz y letra</option><option value="instrumental">Solo instrumental</option></select></div>
+          <div class="field"><label for="length">Duración orientativa</label><select id="length" name="length"><option value="short">1–2 minutos aprox.</option><option value="long">2–3 minutos aprox.</option></select></div>
+        </div>
+
+        <button id="generate-button" class="generate-button" type="submit"><span class="spark">✦</span><span id="button-label">Generar mi canción</span><span class="arrow">↗</span></button>
+        <p class="fine-print">Cada generación de Lyria 3.5 tiene un coste. La clave de Google permanece en el servidor y nunca se envía al navegador.</p>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <section id="result" class="result hidden" aria-live="polite">
+        <div class="result-heading"><div><p class="eyebrow">TU CREACIÓN</p><h3>Tu canción está lista</h3></div><span class="ready-tag">LISTA</span></div>
+        <audio id="audio-player" controls></audio>
+        <a id="download-link" class="download-link" download="jbm-cancion.mp3">↓ Descargar canción</a>
+        <div id="lyrics-wrap" class="lyrics-wrap hidden"><h4>Letra / estructura generada</h4><pre id="generated-lyrics"></pre></div>
+      </section>
+    </section>
+  </main>
+
+  <footer class="footer"><span>© J-BM MUSIC AI</span><span>SIEMPRE J-BM</span></footer>
+
+  <div id="access-screen" class="access-screen">
+    <section class="access-card">
+      <div class="access-logo">J<span>·</span>BM</div>
+      <p class="eyebrow">ACCESO PRIVADO</p>
+      <h2>Bienvenido al estudio</h2>
+      <p>Introduce la clave privada que configuró el administrador de la web.</p>
+      <form id="access-form">
+        <label for="access-code">Clave de acceso</label>
+        <input id="access-code" type="password" autocomplete="current-password" minlength="16" maxlength="200" required placeholder="Tu clave privada">
+        <button class="generate-button" type="submit"><span>Entrar al estudio</span><span class="arrow">↗</span></button>
+      </form>
+      <p id="access-status" class="access-status" role="status" aria-live="polite"></p>
+      <p class="access-footnote">Esta clave no es tu clave de Google. Nunca escribas tu API key en esta pantalla.</p>
+    </section>
+  </div>
+</body>
+</html>
